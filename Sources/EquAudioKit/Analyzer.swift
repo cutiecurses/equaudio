@@ -166,7 +166,14 @@ public final class Analyzer {
 
     /// 3-tap smoothing across frequency, so the Impact curves read as curves and not as noise.
     private func smoothed(_ v: [Float]) -> [Float] {
-        (0..<v.count).map { i in 0.25 * v[max(i - 1, 0)] + 0.5 * v[i] + 0.25 * v[min(i + 1, v.count - 1)] }
+        // Spelled out with explicit types: older compilers (Swift 6.1) give up on the one-line form.
+        let last = v.count - 1
+        return (0..<v.count).map { (i: Int) -> Float in
+            let before: Float = v[max(i - 1, 0)]
+            let here: Float = v[i]
+            let after: Float = v[min(i + 1, last)]
+            return 0.25 * before + 0.5 * here + 0.25 * after
+        }
     }
 
     private func updateBass(dt: Float, now: Double) {
@@ -214,8 +221,14 @@ public final class Analyzer {
             peaks[i] = min(bands[i] + 0.06 + 0.04 * sinf(x * 40), 1)
             inputBands[i] = min(max(bands[i] - 0.22 * expf(-x * 4) - 0.04 + 0.05 * sinf(x * 11), 0.03), 0.95)
         }
-        left = (0..<Analyzer.scopeCount).map { 0.5 * sinf(Float($0) * 0.09) + 0.25 * sinf(Float($0) * 0.41 + 1) + 0.12 * sinf(Float($0) * 1.3) }
-        right = (0..<Analyzer.scopeCount).map { 0.5 * sinf(Float($0) * 0.09 + 0.25) + 0.22 * sinf(Float($0) * 0.37) + 0.12 * sinf(Float($0) * 1.1 + 2) }
+        left = (0..<Analyzer.scopeCount).map { (n: Int) -> Float in
+            let t = Float(n)
+            return 0.5 * sinf(t * 0.09) + 0.25 * sinf(t * 0.41 + 1) + 0.12 * sinf(t * 1.3)
+        }
+        right = (0..<Analyzer.scopeCount).map { (n: Int) -> Float in
+            let t = Float(n)
+            return 0.5 * sinf(t * 0.09 + 0.25) + 0.22 * sinf(t * 0.37) + 0.12 * sinf(t * 1.1 + 2)
+        }
         outputCurve = bands; inputCurve = inputBands
         bass = 0.74; kick = 0.6; rings = [0.12, 0.45, 0.78]
         delta = (9.2, 0.8, 2.4)
