@@ -403,10 +403,19 @@ struct EquAudioApp: App {
     host.layer?.backgroundColor = NSColor.black.cgColor
     var x: CGFloat = 8
     func place(_ v: NSView, _ w: CGFloat) { v.translatesAutoresizingMaskIntoConstraints = true; v.frame = NSRect(x: x, y: 5, width: w, height: 30); host.addSubview(v); x += w + 12 }
-    let demo: [Float] = (0..<120).map { 0.5 + 0.3 * Float(sin(Double($0) / 6)) + 0.1 * Float(sin(Double($0) / 1.9)) }
+    // Explicit types: older compilers (Swift 6.1) give up on the one-line closures below.
+    let demo: [Float] = (0..<120).map { (n: Int) -> Float in
+        let slow = Float(sin(Double(n) / 6)), fast = Float(sin(Double(n) / 1.9))
+        return 0.5 + 0.3 * slow + 0.1 * fast
+    }
     let strip = MeterButton(width: 150); strip.withScopeLine(); strip.samples = demo; strip.levels = (0.55, 0.42); place(strip, 150)
     let bar = MeterButton(width: 250); bar.levels = (0.7, 0.62); place(bar, 250)
-    let a = ScopeButton(width: 230); a.samples = (0..<120).map { 0.45 + 0.25 * Float(sin(Double($0) / 5)) + 0.12 * Float(sin(Double($0) / 1.7)) }; place(a, 230)
+    let a = ScopeButton(width: 230)
+    a.samples = (0..<120).map { (n: Int) -> Float in
+        let slow = Float(sin(Double(n) / 5)), fast = Float(sin(Double(n) / 1.7))
+        return 0.45 + 0.25 * slow + 0.12 * fast
+    }
+    place(a, 230)
     let b = TouchSlider(kind: "bass", title: "Bass", width: 140); b.value = 0.42; place(b, 140)
     let scale: CGFloat = 3
     guard let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(760 * scale), pixelsHigh: Int(40 * scale), bitsPerSample: 8,
