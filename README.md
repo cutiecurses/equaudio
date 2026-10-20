@@ -8,6 +8,7 @@
 A 10-band EQ, bass, clarity, loudness, stereo width and a look-ahead limiter on everything you play.<br>
 No driver to install. No account. Nothing leaves your Mac.
 
+[![CI](https://img.shields.io/github/actions/workflow/status/githubhyno/equaudio/ci.yml?branch=main&style=flat-square&label=build%20%26%20tests)](https://github.com/githubhyno/equaudio/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/githubhyno/equaudio?style=flat-square&color=b76e79&label=release)](https://github.com/githubhyno/equaudio/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/githubhyno/equaudio/total?style=flat-square&color=b76e79)](https://github.com/githubhyno/equaudio/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-b76e79?style=flat-square)](LICENSE)
