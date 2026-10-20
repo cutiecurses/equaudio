@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Troubleshooting
+    url: https://github.com/githubhyno/equaudio#troubleshooting
+    about: Crackles, no sound change, Discord not hearing the virtual mic, Boom/eqMac conflicts.
+  - name: How it works
+    url: https://github.com/githubhyno/equaudio/blob/main/docs/ARCHITECTURE.md
+    about: Why process taps, what was measured, and the safety rules.

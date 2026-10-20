@@ -1,0 +1,61 @@
+name: Bug report
+description: Something is broken, sounds wrong or crashes
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please check the [troubleshooting section](https://github.com/githubhyno/equaudio#troubleshooting) first.
+        If **Boom, eqMac or SoundSource** is running, quit it and try again: audio gets processed twice otherwise.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you get instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Play audio in ...
+        2. Pick the preset ...
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: EquAudio version
+      description: Shown in the app menu under About EquAudio, or in the release you downloaded.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac model
+      placeholder: "macOS 26.1, MacBook Pro M2"
+    validations:
+      required: true
+  - type: input
+    id: output
+    attributes:
+      label: Output device
+      description: Speakers, wired or Bluetooth headphones, HDMI, USB DAC, virtual device ...
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options:
+        - DMG from Releases
+        - Built from source
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: The last 50 lines of `~/Library/Logs/EquAudio/EquAudio.log`
+      render: text
