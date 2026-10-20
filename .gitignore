@@ -4,6 +4,9 @@
 .build.nosync/
 .swiftpm/
 
+# Disk images and checksums from scripts/make-dmg.sh --out
+dist/
+
 # macOS / Xcode noise
 .DS_Store
 *.xcodeproj
