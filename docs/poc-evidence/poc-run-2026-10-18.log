@@ -1,0 +1,18 @@
+== EquAudio tap playthrough PoC ==
+macOS Version 26.6.2 (Build 25G83), bundle=com.equaudio.EquAudio.poc
+System audio recording permission (TCC preflight): not determined
+Requesting permission and waiting up to 900 s for approval...
+TCC request callback: granted=true
+Permission now: authorized
+Default output 'BoomAudio' is virtual; using a physical device instead.
+Output device: External Headphones [BuiltInHeadphoneOutputDevice] rate=96000.0
+Started afplay pid=89947
+afplay audio process object: 127
+Tap 128 format: 48000.0 Hz, 2 ch, flags=9, bits=32
+Aggregate 129: rate=96000.0 buffer=512 input streams(ch)=[2] output streams(ch)=[2]
+Running for 4.0 s (output audible at -30 dBFS per tone + EQ)...
+IO cycles=752 frames captured=385024 peak out=0.053
+Raw tap:   250 Hz -39.55 dBFS, 1 kHz -39.60 dBFS (analysis window 3.50 s)
+Processed: 250 Hz -39.27 dBFS, 1 kHz -27.60 dBFS
+Change:    250 Hz +0.28 dB, 1 kHz +12.00 dB (expected ~+0.4 and +12.0)
+RESULT: received=true processedAsExpected=true

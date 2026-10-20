@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template for EquAudio.app/Contents/Info.plist. build.sh fills in the marketing version (from the
+  VERSION file) and the build number (build time, yyyymmddHHMM) and drops this comment.
+  NSAudioCaptureUsageDescription is the text of the System Audio Recording prompt (process taps).
+  NSMicrophoneUsageDescription is needed for the optional "My voice" mix in the virtual mic: without
+  the key macOS terminates the app the moment anything requests the microphone.
+-->
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>EquAudio</string>
+	<key>CFBundleExecutable</key>
+	<string>EquAudio</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.equaudio.EquAudio</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>EquAudio</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>__VERSION__</string>
+	<key>CFBundleVersion</key>
+	<string>__BUILD__</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.music</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.2</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>EquAudio can mix your microphone into the virtual mic so your voice and the music share one input. It is only used when you switch “My voice” on, and audio never leaves your Mac.</string>
+	<key>NSAudioCaptureUsageDescription</key>
+	<string>EquAudio processes the audio other apps play — equalizer, bass and clarity enhancement — before it reaches your speakers or headphones. Audio is processed locally and never leaves your Mac.</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 EquAudio. All rights reserved.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<false/>
+	<key>NSSupportsSuddenTermination</key>
+	<false/>
+</dict>
+</plist>

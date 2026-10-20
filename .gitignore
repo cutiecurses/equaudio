@@ -1,0 +1,11 @@
+# SwiftPM build output (build.sh uses ~/Library/Caches/EquAudio/build instead when the
+# repository lives in iCloud Drive; .build.nosync is the iCloud-excluded variant).
+.build/
+.build.nosync/
+.swiftpm/
+
+# macOS / Xcode noise
+.DS_Store
+*.xcodeproj
+xcuserdata/
+DerivedData/
