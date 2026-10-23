@@ -91,10 +91,7 @@ enum VizDraw {
         grid(ctx, CGSize(width: size.width, height: size.height - 34 + 34), a, bottom: bottom)
         func path(_ v: [Float]) -> Path {
             var p = Path()
-            for i in 0..<n {
-                let pt = CGPoint(x: size.width * CGFloat(i) / CGFloat(n - 1), y: top + h * (1 - CGFloat(v[i])))
-                i == 0 ? p.move(to: pt) : p.addLine(to: pt)
-            }
+            p.addSmoothCurve(through: (0..<n).map { CGPoint(x: size.width * CGFloat($0) / CGFloat(n - 1), y: top + h * (1 - CGFloat(v[$0]))) })
             return p
         }
         var fill = path(a.outputCurve)
@@ -121,11 +118,11 @@ enum VizDraw {
         ctx.stroke(mid, with: .color(UI.raised), lineWidth: 1)
         var wave = Path()
         let n = a.left.count
-        for i in 0..<n {
+        let samples = (0..<n).map { i -> CGPoint in
             let v = CGFloat((a.left[i] + a.right[i]) * 0.5)
-            let pt = CGPoint(x: size.width * CGFloat(i) / CGFloat(n - 1), y: waveH / 2 - v * waveH * 0.46)
-            i == 0 ? wave.move(to: pt) : wave.addLine(to: pt)
+            return CGPoint(x: size.width * CGFloat(i) / CGFloat(n - 1), y: waveH / 2 - v * waveH * 0.46)
         }
+        wave.addSmoothCurve(through: SmoothCurve.decimated(samples, step: 4))
         ctx.stroke(wave, with: .color(UI.accent), style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
         ctx.draw(Text("WAVEFORM").font(UI.font(10)).foregroundColor(UI.muted), at: CGPoint(x: 6, y: 8), anchor: .leading)
 

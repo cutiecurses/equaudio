@@ -6,6 +6,12 @@ All notable changes to EquAudio are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-23
+
+### Changed
+- The output-level line in the window and on the Touch Bar, and the Impact curves and waveform in the
+  visualizer, are now drawn as smooth curves instead of straight segments between samples.
+
 ## [1.0.0] - 2026-10-20
 
 First public release.
@@ -32,3 +38,4 @@ First public release.
 - Release builds contain arm64 code only.
 
 [1.0.0]: https://github.com/githubhyno/equaudio/releases/tag/v1.0.0
+[1.0.1]: https://github.com/cutiecurses/equaudio/releases/tag/v1.0.1

@@ -907,8 +907,7 @@ struct ScopeLine: View {
                     var g = Path(); g.move(to: CGPoint(x: 0, y: size.height * frac)); g.addLine(to: CGPoint(x: size.width, y: size.height * frac))
                     ctx.stroke(g, with: .color(UI.raised.opacity(0.8)), lineWidth: 1)
                 }
-                var line = Path(); line.move(to: pt(0))
-                for i in 1..<n { line.addLine(to: pt(i)) }
+                var line = Path(); line.addSmoothCurve(through: (0..<n).map(pt))
                 var fill = line
                 fill.addLine(to: CGPoint(x: size.width, y: size.height)); fill.addLine(to: CGPoint(x: 0, y: size.height)); fill.closeSubpath()
                 ctx.fill(fill, with: .color(UI.accent.opacity(0.18)))

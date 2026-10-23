@@ -46,8 +46,7 @@ final class ScopeButton: NSButton {
                     y: bottom + (top - bottom) * CGFloat(min(max(slice[i], 0), 1)))
         }
         let line = NSBezierPath()
-        line.move(to: point(0))
-        for i in 1..<slice.count { line.line(to: point(i)) }
+        line.appendSmoothCurve(through: (0..<slice.count).map(point))
         let fill = line.copy() as! NSBezierPath
         fill.line(to: NSPoint(x: point(slice.count - 1).x, y: bottom))
         fill.line(to: NSPoint(x: point(0).x, y: bottom))
@@ -116,8 +115,7 @@ final class MeterButton: NSButton {
             NSPoint(x: box.minX + box.width * CGFloat(i) / CGFloat(slice.count - 1), y: box.minY + box.height * CGFloat(min(max(slice[i], 0), 1)))
         }
         let line = NSBezierPath()
-        line.move(to: point(0))
-        for i in 1..<slice.count { line.line(to: point(i)) }
+        line.appendSmoothCurve(through: (0..<slice.count).map(point))
         line.lineWidth = 1.8
         line.lineJoinStyle = .round
         line.lineCapStyle = .round
